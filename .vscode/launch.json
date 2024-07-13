@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Debug Project With Args",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceFolder}/build/Windows/x86/debug/objectWrapper.exe",  // Path to your executable
+        "args": ["C:\\Program Files (x86)\\Aliens vs. Predator 2\\AVP2\\TEST.lto", "JUPITER"],  // Add your debug arguments here
+        "stopAtEntry": false,
+        "cwd": "${workspaceFolder}",
+        "environment": [],
+        "externalConsole": false,
+        "MIMode": "gdb",
+        "setupCommands": [
+          {
+            "description": "Enable pretty-printing for gdb",
+            "text": "-enable-pretty-printing",
+            "ignoreFailures": true
+          }
+        ],
+        "preLaunchTask": "CMake: build",  // Ensure your project is built before launching
+        "miDebuggerPath": "C:/mingw32/bin/gdb.exe",  // Path to your debugger
+        "logging": {
+          "moduleLoad": false,
+          "programOutput": true,
+          "engineLogging": false,
+          "trace": false
+        }
+      }
+    ]
+  }
+  
