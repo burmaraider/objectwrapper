@@ -53,9 +53,15 @@ if(${PLATFORM} STREQUAL "Windows")
   endif()
 endif()
 
-set(SOURCE_FILES 
+# Add compiler flags for GCC
+if(CMAKE_COMPILER_IS_GNUCC)
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic")
+endif()
 
+set(SOURCE_FILES 
 ${SOURCE_DIR}/main.c
+${SOURCE_DIR}/socketipc.c
+${SOURCE_DIR}/packer.c
 )
 
 add_executable(${PROJECT_NAME} ${HEADER_FILES} ${SOURCE_FILES} )
@@ -66,17 +72,17 @@ set_target_properties(${PROJECT_NAME} PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAK
 
 if(MSVC)
   if(${CMAKE_BUILD_TYPE} STREQUAL "MinSizeRel")
-    set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE LINK_FLAGS "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+    set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE LINK_FLAGS "/SUBSYSTEM:CONSOLE /ENTRY:mainCRTStartup")
   endif()
   if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
-    set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE LINK_FLAGS "/SUBSYSTEM:WINDOWS /ENTRY:mainCRTStartup")
+    set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE LINK_FLAGS "/SUBSYSTEM:CONSOLE /ENTRY:mainCRTStartup")
   endif()
 else()
     if(${CMAKE_BUILD_TYPE} STREQUAL "MinSizeRel")
-      set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE LINK_FLAGS "-mwindows")
+      set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE LINK_FLAGS "-mconsole")
     endif()
     if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
-      set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE LINK_FLAGS "-mwindows")
+      set_target_properties(${PROJECT_NAME} PROPERTIES WIN32_EXECUTABLE TRUE LINK_FLAGS "-mconsole")
     endif()
 endif()
 

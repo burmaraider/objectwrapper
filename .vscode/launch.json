@@ -6,7 +6,7 @@
         "type": "cppdbg",
         "request": "launch",
         "program": "${workspaceFolder}/build/Windows/x86/debug/objectWrapper.exe",  // Path to your executable
-        "args": ["C:\\Program Files (x86)\\Aliens vs. Predator 2\\AVP2\\TEST.lto", "JUPITER"],  // Add your debug arguments here
+        "args": ["C:\\Games\\No One Lives Forever\\NOLF\\OBJECT.lto", "LT2"],  // Add your debug arguments here
         "stopAtEntry": false,
         "cwd": "${workspaceFolder}",
         "environment": [],

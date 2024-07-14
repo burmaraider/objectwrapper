@@ -89,7 +89,8 @@
         "shlwapi.h": "c",
         "optionutil.h": "c",
         "vector": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "socketipc.h": "c"
     },
     "cmake.preferredGenerators": [
         "Ninja"
